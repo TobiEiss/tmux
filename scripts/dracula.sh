@@ -144,6 +144,11 @@ main()
         script="${script} not found!"
       fi
 
+    elif [ $plugin = "habbit" ]; then
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-habbit-colors" "light_purple dark_gray")
+      tmux set-option -g status-right-length 250
+      script="#($current_dir/habbit.sh)"
+
     elif [ $plugin = "cwd" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-cwd-colors" "dark_gray white")
       tmux set-option -g status-right-length 250
